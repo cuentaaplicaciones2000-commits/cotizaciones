@@ -1,5 +1,12 @@
 # Verificación de captura automática — 7 de octubre de 2026
 
+## Actualización tras la ejecución en GitHub Actions
+
+El usuario confirmó 13 bancos OK y un `ConnectTimeout` para Prodem desde Actions.
+El 14/14 indicado abajo corresponde al entorno local, no al runner de GitHub.
+Se añadieron diagnóstico en tres runners y selección mediante `COTIZACIONES_RUNNER`.
+La conectividad remota queda pendiente de esa prueba; no se afirma resuelto el timeout.
+
 Resultado: **14/14 bancos OK**, cuatro pruebas de regresión OK y `docs/` sin cambios
 (comparación SHA-256 antes y después). Los valores son los observados durante esta prueba,
 en Bs por USD; no son constantes del código.

@@ -16,7 +16,10 @@ concurrency:
 
 jobs:
   actualizar:
-    runs-on: ubuntu-latest
+    runs-on: ${{ vars.COTIZACIONES_RUNNER || 'ubuntu-latest' }}
+    defaults:
+      run:
+        shell: bash
     steps:
       - name: Descargar repositorio
         uses: actions/checkout@v4

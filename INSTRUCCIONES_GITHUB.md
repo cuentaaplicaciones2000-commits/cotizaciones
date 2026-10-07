@@ -7,7 +7,7 @@ y manual, la publicación explícita en GitHub Pages y las pruebas individuales.
 
 Descomprime el ZIP. La carpeta `cotizacion` contiene el proyecto. No subas el archivo
 ZIP a GitHub: sube los archivos descomprimidos. Comprueba que exista la carpeta oculta
-`.github/workflows/` con tres archivos YAML. Usa Git o GitHub Desktop para incluirla.
+`.github/workflows/` con cuatro archivos YAML. Usa Git o GitHub Desktop para incluirla.
 
 ## 2A. Si ya tienes un repositorio funcionando
 
@@ -117,6 +117,32 @@ registro y publica Pages. Los campos de tasas que dejes vacíos se omiten del nu
 estado actual de ese banco.
 
 ## Problemas frecuentes
+
+### Prodem: ConnectTimeout desde GitHub Actions
+
+Un `ConnectTimeout` significa que el servidor de GitHub no pudo establecer la
+conexión HTTPS con Prodem. No identifica un problema de extracción HTML ni confirma
+por sí solo que el banco esté bloqueando GitHub. En las pruebas locales, tanto
+`prodem.bo` como `www.prodem.bo` respondieron correctamente y resolvieron a la misma IP.
+
+1. Sube también `.github/workflows/diagnostico-prodem.yml` y
+   `pruebas/diagnostico_conexion_prodem.py` (o todos los archivos de código del paquete).
+2. En Actions ejecuta **Diagnosticar conexión Prodem → Run workflow** en `main`.
+   Prueba Linux, Windows y macOS por separado, sin escribir cotizaciones.
+3. Si alguno termina en verde, abre **Settings → Secrets and variables → Actions →
+   Variables → New repository variable**. Nombre: `COTIZACIONES_RUNNER`.
+   Valor: el runner que funcionó, por ejemplo `windows-latest` o `macos-latest`.
+4. Ejecuta **Actualizar tipo de cambio** y comprueba los 14 bancos en ese runner.
+   El cambio de runner puede afectar la conectividad de otros bancos; el resultado
+   definitivo se verifica con esa nueva ejecución. Ambos workflows de captura
+   tienen Bash explícito para funcionar también en Windows y macOS.
+5. Si los tres runners fallan, se necesita una máquina con acceso a Prodem para
+   ejecutar la captura (por ejemplo un runner propio). Aumentar tiempos de espera
+   no garantiza resolver una conexión inaccesible. Conserva el dato anterior
+   mientras se configura esa alternativa o registra una actualización manual.
+
+Sin la variable, la actualización sigue usando `ubuntu-latest`. El despliegue de
+Pages continúa en Ubuntu de forma independiente de la captura.
 
 - **No aparecen workflows:** falta `.github/workflows/` en la raíz del repositorio
   o los archivos se subieron dentro de una carpeta extra.
