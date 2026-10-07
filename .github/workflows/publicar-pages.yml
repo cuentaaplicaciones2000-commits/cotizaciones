@@ -1,0 +1,40 @@
+name: Publicar página de cotizaciones
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "docs/**"
+      - ".github/workflows/**"
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: publicar-pages
+  cancel-in-progress: false
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Descargar los últimos datos de main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Preparar la página y los historiales
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: docs
+      - name: Publicar en GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

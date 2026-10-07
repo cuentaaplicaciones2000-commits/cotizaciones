@@ -1,0 +1,54 @@
+name: Actualizar tipo de cambio
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"  # Cada 30 minutos (GitHub puede retrasarlo)
+  workflow_dispatch:       # Permite ejecutarlo manualmente
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: actualizar-tipo-cambio
+  cancel-in-progress: false
+
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: Instalar Chromium para páginas dinámicas
+        run: playwright install --with-deps chromium
+
+      - name: Obtener tipos de cambio
+        run: python actualizar.py
+
+      - name: Guardar cambios
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs
+          if git diff --cached --quiet; then
+            echo "Sin cambios"
+          else
+            git commit -m "Actualizar tipo de cambio"
+            git pull --rebase
+            git push
+          fi
+
+  publicar:
+    needs: actualizar
+    uses: ./.github/workflows/publicar-pages.yml

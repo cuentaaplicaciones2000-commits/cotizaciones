@@ -1,0 +1,188 @@
+{
+  "fecha_utc": "2026-10-07T21:04:34.596640+00:00",
+  "resultados": [
+    {
+      "banco": "bcb",
+      "ok": true,
+      "campos": {
+        "compra": "—",
+        "venta": "—",
+        "oficial": "11.97"
+      },
+      "campos_faltantes": [],
+      "codigo": 0,
+      "salida": "[OK]    bcb: compra=— venta=— oficial=11.97\n\nResumen: 1 OK, 0 con fallo \n",
+      "error": ""
+    },
+    {
+      "banco": "bcp",
+      "ok": true,
+      "campos": {
+        "compra": "11.47",
+        "venta": "12.27",
+        "oficial": "—"
+      },
+      "campos_faltantes": [],
+      "codigo": 0,
+      "salida": "[OK]    bcp: compra=11.47 venta=12.27 oficial=—\n\nResumen: 1 OK, 0 con fallo \n",
+      "error": ""
+    },
+    {
+      "banco": "bnb",
+      "ok": true,
+      "campos": {
+        "compra": "11.47",
+        "venta": "12.27",
+        "oficial": "11.97"
+      },
+      "campos_faltantes": [],
+      "codigo": 0,
+      "salida": "[OK]    bnb: compra=11.47 venta=12.27 oficial=11.97\n\nResumen: 1 OK, 0 con fallo \n",
+      "error": ""
+    },
+    {
+      "banco": "union",
+      "ok": true,
+      "campos": {
+        "compra": "10.97",
+        "venta": "12.27",
+        "oficial": "11.97"
+      },
+      "campos_faltantes": [],
+      "codigo": 0,
+      "salida": "[OK]    union: compra=10.97 venta=12.27 oficial=11.97\n\nResumen: 1 OK, 0 con fallo \n",
+      "error": ""
+    },
+    {
+      "banco": "bmsc",
+      "ok": true,
+      "campos": {
+        "compra": "10.87",
+        "venta": "12.27",
+        "oficial": "11.97"
+      },
+      "campos_faltantes": [],
+      "codigo": 0,
+      "salida": "[OK]    bmsc: compra=10.87 venta=12.27 oficial=11.97\n\nResumen: 1 OK, 0 con fallo \n",
+      "error": ""
+    },
+    {
+      "banco": "bisa",
+      "ok": true,
+      "campos": {
+        "compra": "11.27",
+        "venta": "12.27",
+        "oficial": "—"
+      },
+      "campos_faltantes": [],
+      "codigo": 0,
+      "salida": "[OK]    bisa: compra=11.27 venta=12.27 oficial=—\n\nResumen: 1 OK, 0 con fallo \n",
+      "error": ""
+    },
+    {
+      "banco": "ganadero",
+      "ok": true,
+      "campos": {
+        "compra": "—",
+        "venta": "12.27",
+        "oficial": "—"
+      },
+      "campos_faltantes": [],
+      "codigo": 0,
+      "salida": "[OK]    ganadero: compra=— venta=12.27 oficial=—\n\nResumen: 1 OK, 0 con fallo \n",
+      "error": ""
+    },
+    {
+      "banco": "economico",
+      "ok": true,
+      "campos": {
+        "compra": "11.07",
+        "venta": "12.32",
+        "oficial": "11.97"
+      },
+      "campos_faltantes": [],
+      "codigo": 0,
+      "salida": "[OK]    economico: compra=11.07 venta=12.32 oficial=11.97\n\nResumen: 1 OK, 0 con fallo \n",
+      "error": ""
+    },
+    {
+      "banco": "bancosol",
+      "ok": true,
+      "campos": {
+        "compra": "10.77",
+        "venta": "12.27",
+        "oficial": "11.97"
+      },
+      "campos_faltantes": [],
+      "codigo": 0,
+      "salida": "[OK]    bancosol: compra=10.77 venta=12.27 oficial=11.97\n\nResumen: 1 OK, 0 con fallo \n",
+      "error": ""
+    },
+    {
+      "banco": "prodem",
+      "ok": true,
+      "campos": {
+        "compra": "11.67",
+        "venta": "12.07",
+        "oficial": "11.97"
+      },
+      "campos_faltantes": [],
+      "codigo": 0,
+      "salida": "[OK]    prodem: compra=11.67 venta=12.07 oficial=11.97\n\nResumen: 1 OK, 0 con fallo \n",
+      "error": ""
+    },
+    {
+      "banco": "fortaleza",
+      "ok": true,
+      "campos": {
+        "compra": "11.67",
+        "venta": "12.27",
+        "oficial": "11.97"
+      },
+      "campos_faltantes": [],
+      "codigo": 0,
+      "salida": "[OK]    fortaleza: compra=11.67 venta=12.27 oficial=11.97\n\nResumen: 1 OK, 0 con fallo \n",
+      "error": ""
+    },
+    {
+      "banco": "ecofuturo",
+      "ok": true,
+      "campos": {
+        "compra": "10.97",
+        "venta": "12.37",
+        "oficial": "11.97"
+      },
+      "campos_faltantes": [],
+      "codigo": 0,
+      "salida": "[OK]    ecofuturo: compra=10.97 venta=12.37 oficial=11.97\n\nResumen: 1 OK, 0 con fallo \n",
+      "error": ""
+    },
+    {
+      "banco": "fie",
+      "ok": true,
+      "campos": {
+        "compra": "11.07",
+        "venta": "12.17",
+        "oficial": "11.97"
+      },
+      "campos_faltantes": [],
+      "codigo": 0,
+      "salida": "[OK]    fie: compra=11.07 venta=12.17 oficial=11.97\n\nResumen: 1 OK, 0 con fallo \n",
+      "error": ""
+    },
+    {
+      "banco": "bancomunidad",
+      "ok": true,
+      "campos": {
+        "compra": "11.57",
+        "venta": "12.22",
+        "oficial": "11.97"
+      },
+      "campos_faltantes": [],
+      "codigo": 0,
+      "salida": "[OK]    bancomunidad: compra=11.57 venta=12.22 oficial=11.97\n\nResumen: 1 OK, 0 con fallo \n",
+      "error": ""
+    }
+  ],
+  "docs_sin_cambios": true
+}

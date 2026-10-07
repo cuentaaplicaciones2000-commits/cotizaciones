@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10243a">
+  <title>Dólar Bolivia | Cotizaciones bancarias</title>
+  <style>
+    :root{--ink:#152a3d;--muted:#68798b;--line:#e4eaf0;--teal:#087f77;--bg:#f2f6f8;--card:#fff;--shadow:0 12px 30px #17324a12}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+    .hero{background:linear-gradient(118deg,#10243a,#174b65 70%,#168c81);color:#fff;padding:30px max(22px,calc((100vw - 1240px)/2)) 46px}.top{display:flex;justify-content:space-between;align-items:center;gap:20px}.brand{font-size:13px;font-weight:750;letter-spacing:.08em;text-transform:uppercase}.live{font-size:12px;color:#d0eee9}.hero h1{font-size:clamp(28px,4vw,42px);line-height:1.12;margin:34px 0 9px}.hero p{margin:0;color:#d7e5ec}.wrap{max-width:1240px;margin:-22px auto 56px;padding:0 22px}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:22px}.card,.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}.stat{padding:17px 19px}.stat small,.eyebrow{display:block;color:var(--muted);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}.stat strong{display:block;font-size:23px;margin-top:5px}.layout{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(310px,.85fr);gap:18px;align-items:start}.panel{padding:22px}.panel h2{font-size:19px;margin:0}.sub{margin:4px 0 18px;color:var(--muted);font-size:13px}.toolbar{margin-bottom:14px}input,select{width:100%;border:1px solid #d7e0e8;border-radius:9px;background:white;padding:10px 11px;color:var(--ink);font:inherit;outline:none}input:focus,select:focus{border-color:#4b9b9a;box-shadow:0 0 0 3px #0a8f8319}.table-wrap{overflow:auto}table{border-collapse:collapse;width:100%;min-width:640px}th{text-align:left;padding:11px 10px;color:var(--muted);font-size:11px;letter-spacing:.07em;text-transform:uppercase;border-bottom:1px solid var(--line)}td{padding:13px 10px;border-bottom:1px solid var(--line);font-size:13px}tbody tr:hover{background:#f8fafb}.bank,.rate{font-weight:700}.rate{font-variant-numeric:tabular-nums}.muted{color:#94a1ad}.actions a{color:#147b78;text-decoration:none;font-weight:650;margin-right:8px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.wide{grid-column:1/-1}label{display:block;font-size:12px;color:#536577;font-weight:700;margin:0 0 5px}.btn{border:0;border-radius:9px;background:var(--teal);color:white;font:inherit;font-weight:750;padding:11px 15px;cursor:pointer}.btn:hover{background:#066b65}.btn:disabled{opacity:.6;cursor:wait}.hint,.token-note{font-size:12px;color:var(--muted)}.token-note{padding:11px 12px;background:#f3f7fa;border-radius:9px;margin-top:14px}.token-note a{color:#176c79}.status{display:none;margin-top:13px;padding:11px;border-radius:9px;font-size:13px}.status.show{display:block}.status.ok{background:#e8f6ee;color:#17683b}.status.err{background:#fff0ed;color:#9c3325}.foot{display:flex;justify-content:space-between;gap:12px;margin-top:20px;color:var(--muted);font-size:12px}.foot a{color:#176c79;text-decoration:none}
+    @media(max-width:850px){.layout{grid-template-columns:1fr}.stat{padding:14px}.stat strong{font-size:19px}}@media(max-width:520px){.hero{padding-top:22px}.hero h1{margin-top:26px}.wrap{padding:0 12px}.stats{grid-template-columns:1fr}.panel{padding:17px}.top{align-items:flex-start;flex-direction:column}.form-grid{grid-template-columns:1fr}.wide{grid-column:auto}.foot{flex-direction:column}}
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="top"><div class="brand">Bolivia · Mercado cambiario</div><div class="live" id="updated">Cargando cotizaciones…</div></div>
+    <h1>Tipo de cambio bancario</h1>
+    <p>Consulta las cotizaciones publicadas y registra las actualizaciones del día.</p>
+  </header>
+  <main class="wrap">
+    <section class="stats">
+      <div class="card stat"><small>Bancos con datos</small><strong id="stat-count">—</strong></div>
+      <div class="card stat"><small>Mejor compra publicada</small><strong id="stat-buy">—</strong></div>
+      <div class="card stat"><small>Menor venta publicada</small><strong id="stat-sell">—</strong></div>
+    </section>
+    <div class="layout">
+      <section class="panel">
+        <h2>Cotizaciones actuales</h2><p class="sub">Montos en bolivianos por dólar estadounidense.</p>
+        <div class="toolbar"><input id="search" placeholder="Buscar banco…" aria-label="Buscar banco"></div>
+        <div class="table-wrap"><table><thead><tr><th>Banco</th><th>Compra</th><th>Venta</th><th>Oficial</th><th>Actualizado</th><th>Datos</th></tr></thead><tbody id="rows"><tr><td colspan="6" class="muted">Cargando datos…</td></tr></tbody></table></div>
+        <div class="foot"><a href="todos.json">Descargar resumen JSON</a><span>El historial conserva cada consulta exitosa.</span></div>
+      </section>
+      <section class="panel">
+        <h2>Actualizar manualmente</h2><p class="sub">Registra las tasas publicadas hoy; el nuevo dato se agrega al historial.</p>
+        <form id="manual-form">
+          <div class="form-grid">
+            <div class="wide"><label for="bank">Banco</label><select id="bank" required></select></div>
+            <div><label for="buy">Compra (Bs)</label><input id="buy" inputmode="decimal" placeholder="Ej. 11,40"></div>
+            <div><label for="sell">Venta (Bs)</label><input id="sell" inputmode="decimal" placeholder="Ej. 12,20"></div>
+            <div class="wide"><label for="official">Oficial (Bs)</label><input id="official" inputmode="decimal" placeholder="Opcional"></div>
+            <div><label for="owner">Usuario u organización</label><input id="owner" required autocomplete="off"></div>
+            <div><label for="repo">Repositorio</label><input id="repo" required autocomplete="off"></div>
+            <div class="wide"><label for="token">Token fine-grained de GitHub</label><input id="token" type="password" required autocomplete="new-password" placeholder="github_pat_…"></div>
+            <div class="wide"><button class="btn" id="submit" type="submit">Guardar y registrar</button></div>
+          </div>
+          <div id="status" class="status" role="status"></div>
+        </form>
+        <div class="token-note">El token se usa solo para enviar esta solicitud y no se guarda. Crea uno limitado a este repositorio con permiso <b>Actions: Read and write</b>. <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">Crear token</a>.</div>
+      </section>
+    </div>
+  </main>
+  <script>
+    const BANKS = __BANKS__;
+    const $ = id => document.getElementById(id);
+    const safe = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const money = value => value ? `Bs ${String(value).replace('.', ',')}` : '—';
+    const select = $('bank');
+    BANKS.forEach(b => select.add(new Option(b.nombre,b.id)));
+    const parts = location.pathname.split('/').filter(Boolean);
+    if(location.hostname.endsWith('.github.io')){$('owner').value=location.hostname.split('.')[0];$('repo').value=parts[0]||'';}
+    let records={};
+    function render(){
+      const query=$('search').value.trim().toLocaleLowerCase('es');
+      const rows=BANKS.map(b=>({...b,data:records[b.id]})).filter(b=>b.nombre.toLocaleLowerCase('es').includes(query));
+      const available=BANKS.map(b=>records[b.id]).filter(Boolean);
+      $('stat-count').textContent=`${available.length} / ${BANKS.length}`;
+      const buys=available.map(d=>Number(String(d.compra||'').replace(',','.'))).filter(n=>Number.isFinite(n)&&n>=5);
+      const sells=available.map(d=>Number(String(d.venta||'').replace(',','.'))).filter(n=>Number.isFinite(n)&&n>=5);
+      $('stat-buy').textContent=buys.length?money(Math.max(...buys).toFixed(2)):'—';
+      $('stat-sell').textContent=sells.length?money(Math.min(...sells).toFixed(2)):'—';
+      $('rows').innerHTML=rows.map(b=>{const d=b.data||{},stamp=(d.actualizado||'').replace(' (hora Bolivia)','');return `<tr><td class="bank">${safe(b.nombre)}</td><td class="rate">${money(d.compra)}</td><td class="rate">${money(d.venta)}</td><td>${money(d.oficial)}</td><td>${safe(stamp)||'<span class="muted">Sin datos</span>'}</td><td class="actions"><a href="${encodeURIComponent(b.id)}.txt">TXT</a><a href="historial/${encodeURIComponent(b.id)}.jsonl">Historial</a></td></tr>`}).join('')||'<tr><td colspan="6" class="muted">No hay resultados.</td></tr>';
+    }
+    async function load(){try{const r=await fetch(`todos.json?v=${Date.now()}`,{cache:'no-store'});if(!r.ok)throw Error();records=await r.json();render();$('updated').textContent=`Datos publicados · ${new Date().toLocaleString('es-BO')}`}catch{$('rows').innerHTML='<tr><td colspan="6" class="muted">No se pudieron cargar cotizaciones. Revisa todos.json.</td></tr>';$('updated').textContent='No se pudo cargar la información'}}
+    $('search').addEventListener('input',render);
+    $('manual-form').addEventListener('submit',async event=>{
+      event.preventDefault();const status=$('status'),button=$('submit');status.className='status';
+      const read=id=>$(id).value.trim().replace(',','.');
+      const inputs={compra:read('buy'),venta:read('sell'),oficial:read('official')};
+      if(!Object.values(inputs).some(Boolean)){status.textContent='Ingresa al menos una cotización.';status.className='status show err';return}
+      for(const [name,value] of Object.entries(inputs)){if(value&&(!/^\d{1,2}(\.\d{1,5})?$/.test(value)||Number(value)<5||Number(value)>20)){status.textContent=`El valor de ${name} debe estar entre 5 y 20 Bs.`;status.className='status show err';return}}
+      const token=$('token').value.trim(),owner=$('owner').value.trim(),repo=$('repo').value.trim();button.disabled=true;button.textContent='Enviando…';
+      try{const response=await fetch(`https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/actions/workflows/actualizacion-manual.yml/dispatches`,{method:'POST',headers:{'Accept':'application/vnd.github+json','Authorization':`Bearer ${token}`,'X-GitHub-Api-Version':'2022-11-28','Content-Type':'application/json'},body:JSON.stringify({ref:'main',inputs:{banco:select.value,compra:inputs.compra,venta:inputs.venta,oficial:inputs.oficial}})});if(!response.ok){const body=await response.json().catch(()=>({}));const message=response.status===404?'GitHub no encuentra el repositorio o actualizacion-manual.yml. Sube ese workflow a la rama predeterminada y confirma usuario/repositorio.':response.status===401||response.status===403?'Token inválido o sin permiso Actions: Read and write.':body.message||`GitHub respondió ${response.status}`;throw Error(message)}status.innerHTML=`Solicitud enviada. GitHub Actions guardará el dato y actualizará el historial. <a href="https://github.com/${safe(owner)}/${safe(repo)}/actions" target="_blank" rel="noopener">Ver ejecución</a>`;status.className='status show ok'}catch(error){status.textContent=`No se pudo enviar: ${error.message}`;status.className='status show err'}finally{$('token').value='';button.disabled=false;button.textContent='Guardar y registrar'}
+    });
+    load();
+  </script>
+</body>
+</html>
