@@ -1,5 +1,21 @@
 # Verificación de captura automática — 7 de octubre de 2026
 
+## Nueva verificación local
+
+Se repitieron las cuatro pruebas de regresión de Prodem y la consulta real de los
+14 bancos: todas pasaron. `resultado_bancos.json` contiene los resultados de esta
+ejecución y confirma que la verificación no modificó `docs/`.
+Después se ejecutó `actualizar.py` en modo normal: 14 OK y 0 fallos. Esta
+actualización sí guardó las cotizaciones actuales, agregó un registro automático
+por banco al historial y regeneró el resumen y la página local en `docs/`.
+
+El diagnóstico de conexión recibió HTTP 200 tanto de `https://prodem.bo/Inicio`
+como de `https://www.prodem.bo/Inicio`; ambos resolvieron a `45.4.99.16` y publicaron
+compra 11.67, venta 12.07 y oficial 11.97. Ambos dominios apuntan a la misma IP,
+por lo que cambiar al dominio `www` no demuestra una solución al timeout remoto.
+Esta prueba se realizó desde el equipo local, no desde GitHub Actions; el error
+de conectividad del runner remoto sigue sin verificarse en ese entorno.
+
 ## Actualización tras la ejecución en GitHub Actions
 
 El usuario confirmó 13 bancos OK y un `ConnectTimeout` para Prodem desde Actions.
