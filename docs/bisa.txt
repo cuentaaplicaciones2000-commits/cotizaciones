@@ -1,5 +1,5 @@
 banco=Banco BISA
-compra=11.00
-venta=11.92
-actualizado=2026-10-21 00:17:30 (hora Bolivia)
+compra=11.03
+venta=11.95
+actualizado=2026-10-21 05:32:07 (hora Bolivia)
 origen=automatico
