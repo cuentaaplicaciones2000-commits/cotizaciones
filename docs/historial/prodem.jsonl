@@ -66,3 +66,4 @@
 {"banco_id": "prodem", "banco": "Banco Prodem", "consultado": "2026-10-21T00:17:45-04:00", "origen": "automatico", "compra": "11.40", "venta": "11.80", "oficial": "11.70"}
 {"banco_id": "prodem", "banco": "Banco Prodem", "consultado": "2026-10-21T05:32:23-04:00", "origen": "automatico", "compra": "11.43", "venta": "11.83", "oficial": "11.73"}
 {"banco_id": "prodem", "banco": "Banco Prodem", "consultado": "2026-10-21T11:00:55-04:00", "origen": "automatico", "compra": "11.43", "venta": "11.83", "oficial": "11.73"}
+{"banco_id": "prodem", "banco": "Banco Prodem", "consultado": "2026-10-21T15:16:03-04:00", "origen": "automatico", "compra": "11.43", "venta": "11.83", "oficial": "11.73"}
