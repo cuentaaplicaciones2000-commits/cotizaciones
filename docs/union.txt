@@ -1,4 +1,4 @@
 banco=Banco Unión
-compra=10.34
-actualizado=2026-10-24 07:28:54 (hora Bolivia)
+compra=10.38
+actualizado=2026-10-24 10:49:39 (hora Bolivia)
 origen=automatico
