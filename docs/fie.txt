@@ -2,5 +2,5 @@ banco=Banco FIE
 compra=11.19
 venta=12.19
 oficial=12.09
-actualizado=2026-11-01 14:33:48 (hora Bolivia)
+actualizado=2026-11-01 18:24:42 (hora Bolivia)
 origen=automatico
