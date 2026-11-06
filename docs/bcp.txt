@@ -1,5 +1,5 @@
 banco=Banco de Crédito (BCP)
-compra=11.50
-venta=12.30
-actualizado=2026-11-05 22:09:18 (hora Bolivia)
+compra=11.39
+venta=12.19
+actualizado=2026-11-06 05:45:25 (hora Bolivia)
 origen=automatico
