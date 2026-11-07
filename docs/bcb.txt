@@ -1,4 +1,4 @@
 banco=Banco Central de Bolivia
 oficial=11.81
-actualizado=2026-11-07 11:52:41 (hora Bolivia)
+actualizado=2026-11-07 16:05:37 (hora Bolivia)
 origen=automatico
