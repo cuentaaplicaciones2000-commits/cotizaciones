@@ -185,3 +185,4 @@
 {"banco_id": "ganadero", "banco": "Banco Ganadero", "consultado": "2026-11-09T23:22:53-04:00", "origen": "automatico", "compra": null, "venta": "12.11", "oficial": null}
 {"banco_id": "ganadero", "banco": "Banco Ganadero", "consultado": "2026-11-10T07:39:01-04:00", "origen": "automatico", "compra": null, "venta": "12.05", "oficial": null}
 {"banco_id": "ganadero", "banco": "Banco Ganadero", "consultado": "2026-11-10T15:34:32-04:00", "origen": "automatico", "compra": "10.00", "venta": null, "oficial": null}
+{"banco_id": "ganadero", "banco": "Banco Ganadero", "consultado": "2026-11-10T20:31:24-04:00", "origen": "automatico", "compra": "10.00", "venta": null, "oficial": null}
