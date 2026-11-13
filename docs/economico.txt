@@ -2,5 +2,5 @@ banco=Banco Económico
 compra=10.67
 venta=12.02
 oficial=11.67
-actualizado=2026-11-13 04:39:57 (hora Bolivia)
+actualizado=2026-11-13 13:05:08 (hora Bolivia)
 origen=automatico
