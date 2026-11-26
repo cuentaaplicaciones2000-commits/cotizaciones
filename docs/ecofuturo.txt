@@ -2,5 +2,5 @@ banco=Banco Ecofuturo
 compra=10.83
 venta=12.23
 oficial=11.83
-actualizado=2026-11-25 12:01:02 (hora Bolivia)
+actualizado=2026-11-25 20:13:58 (hora Bolivia)
 origen=automatico
